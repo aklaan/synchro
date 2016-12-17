@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SpigRacer</string>
+    <string name="splashscreen">img/splash_land_1280x720.png</string>
+
+</resources>

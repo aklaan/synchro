@@ -1,0 +1,83 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+
+    }
+    dependencies {
+        // replace with the current version of the Android plugin
+//        classpath 'com.android.tools.build:gradle:2.2.1'
+        // replace with the current version of the android-apt plugin
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+
+apply plugin: 'com.android.library'
+apply plugin: 'android-apt'
+//apply plugin: 'maven'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 24
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_6
+    }
+}
+def AAVersion='4.0.0'
+
+dependencies {
+//    apt "org.androidannotations:androidannotations:$AAVersion" compile "org.androidannotations:androidannotations-api:$AAVersion" compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.2.1'
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'maven-publish'
+
+task sourceJar(type:Jar){
+    from android.sourceSets.main.java.srcDirs
+    classifier "source"
+}
+publishing {
+    publications {
+//ici gamingtools correspond au dossier où va être
+        gamingtools(MavenPublication) {
+            groupId 'com.familledupuis91'
+            artifactId 'GamingTools'
+            version '0.0.0-SNAPSHOT'
+            artifact(sourceJar)
+            artifact("$buildDir/outputs/aar/GamingTools-debug.aar")
+        }
+    }
+
+    repositories {
+        maven {
+            url "file://C:\\Users\\rodol\\.m2\\repository"
+        }
+    }
+
+}
