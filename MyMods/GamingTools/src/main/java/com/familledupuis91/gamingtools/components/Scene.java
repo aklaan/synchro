@@ -380,28 +380,28 @@ public long generateGameObjectId(){
         switch (this.getActivity().getSurfaceView().getScreenEvent()) {
 
             case SCROLL_H_RIGHT:
-                moffsetX = +20;
+                moffsetX +=20;
                 break;
 
             case SCROLL_H_LEFT:
-                moffsetX = -20;
+                moffsetX  -=20;
                 break;
 
 
             case SCROLL_V_UP:
-                moffsetY = +20;
+                moffsetY  +=20;
                 break;
 
             case SCROLL_V_DOWN:
-                moffsetY = -20;
+                moffsetY  -=20;
                 break;
 
             default:
                 break;
 
         }
-
-        Matrix.orthoM(mProjectionORTH, 0-moffsetY, -0-moffsetX, this.getWidth()-moffsetX, 0, this.getHeight()-moffsetY, -1.f, 1.f);
+        //orthoM(float[] m, int mOffset, float left, float right, float bottom, float top, float near, float far)
+        Matrix.orthoM(mProjectionORTH, 0, -0-moffsetX, this.getWidth()-moffsetX, 0-moffsetY, this.getHeight()-moffsetY, -1.f, 1.f);
 
         //-----------------------------------
 
