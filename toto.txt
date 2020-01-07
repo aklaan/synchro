@@ -1,0 +1,14 @@
+ Le volume dans le lecteur C n'a pas de nom.
+ Le num‚ro de s‚rie du volume est FC2E-47DB
+
+ R‚pertoire de C:\test\synchro
+
+07/01/2020  16:51    <DIR>          .
+07/01/2020  16:51    <DIR>          ..
+07/01/2020  16:43               395 .gitattributes
+07/01/2020  16:43               124 .gitignore
+07/01/2020  16:43    <DIR>          MyMods
+07/01/2020  16:43    <DIR>          SpigRacer
+07/01/2020  16:51                 0 toto.txt
+               3 fichier(s)              519 octets
+               4 R‚p(s)  255ÿ019ÿ012ÿ096 octets libres
